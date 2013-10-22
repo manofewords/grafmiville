@@ -1,13 +1,20 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
 @font-face {
   font-family: "Solex";
-  src: url("solexreg-webfont.woff") format("woff");
+  src: url("../fonts/solexreg-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "JandA";
-  src: url("jandasafeandsoundsolid-webfont.woff") format("woff");
+  src: url("../fonts/jandasafeandsoundsolid-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +31,7 @@ a {
 }
 
 header {
-  background: url("header.png");
+  background: url("../images/header.png");
   width: 894px;
   height: 475px;
 }
@@ -171,7 +178,7 @@ li:before {
 #arrows {
   width: 70px;
   height: 50px;
-  background-image: url("arrows.png");
+  background-image: url("../images/arrows.png");
   position: absolute;
   top: 208px;
   left: 756px;
@@ -192,7 +199,7 @@ li:before {
 #manu {
 width: 50px;
 height: 72px;
-background-image: url("sprite.png");
+background-image: url("../images/sprite.png");
 
 -webkit-animation: play .8s steps(10) infinite;
 }
@@ -205,7 +212,7 @@ to { background-position: -500px; }
 #manu {
   width: 70px;
   height: 100px;
-  background-image: url("manu.png");
+  background-image: url("../images/manu.png");
   position: absolute;
 }
 
