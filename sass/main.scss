@@ -147,7 +147,7 @@ li {
     // TODO: add texture
     background: green;
     height: 100px; // arbitrary
-    width: 2300px; // arbitrary
+    width: 2500px; // arbitrary
     top: 353px; // to more or less touch the feet of the people in header.png
   }
 }
@@ -263,11 +263,19 @@ $afterFirstRun_x: afterRun_x($box1_x);
 $afterSecondRun_x: afterRun_x($box2_x);
 @include runAndJumpAnimation("jumpnrun2", $afterFirstRun_x, $afterSecondRun_x); // triggered via JavaScript when button is clicked
 
+$afterThirdRun_x: afterRun_x($box3_x);
+@include runAndJumpAnimation("jumpnrun3", $afterSecondRun_x, $afterThirdRun_x); // triggered via JavaScript when button is clicked
+
 #box1 {
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + $animDurationToRunAndJump;
+  -webkit-animation-name: expand1;
+}
+
+// TODO: refactor
+
+#box1 {
   -webkit-animation-duration: $animDurationToExpandBox;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: expand1;
 }
 
 @-webkit-keyframes expand1 {
@@ -288,6 +296,70 @@ $afterSecondRun_x: afterRun_x($box2_x);
   from {
     top: 10px;
     left: 765px; 
+    width: 500px;
+    height: 170px; 
+  }
+  to {
+    width: $boxSize;
+    height: $boxSize;
+  }
+}
+
+#box2 {
+  -webkit-animation-duration: $animDurationToExpandBox;
+  -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes expand2 {
+  from {
+    width: $boxSize;
+    height: $boxSize;
+  }
+  to {
+    top: 10px;
+    left: 1265px; 
+    width: 500px;
+    height: 170px; 
+  }
+}
+
+@-webkit-keyframes shrink2 {
+  /* reverse from expand */
+  from {
+    top: 10px;
+    left: 1265px; 
+    width: 500px;
+    height: 170px; 
+  }
+  to {
+    width: $boxSize;
+    height: $boxSize;
+  }
+}
+
+#box3 {
+  -webkit-animation-duration: $animDurationToExpandBox;
+  -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes expand3 {
+  from {
+    width: $boxSize;
+    height: $boxSize;
+  }
+  to {
+    top: 10px;
+    left: 1765px; 
+    width: 500px;
+    height: 170px; 
+  }
+}
+
+@-webkit-keyframes shrink3 {
+  /* reverse from expand */
+  from {
+    top: 10px;
+    left: 1765px; 
     width: 500px;
     height: 170px; 
   }

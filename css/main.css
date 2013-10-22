@@ -209,7 +209,7 @@ li:before {
   to {
     background: green;
     height: 100px;
-    width: 2300px;
+    width: 2500px;
     top: 353px;
   }
 }
@@ -333,11 +333,36 @@ to { background-position: -500px; }
   }
 }
 
+@-webkit-keyframes jumpnrun3 {
+  from {
+    top: 261px;
+    left: 1482px;
+  }
+
+  66% {
+    top: 261px;
+    left: 1982px;
+  }
+
+  82% {
+    top: 227px;
+    left: 1982px;
+  }
+
+  to {
+    top: 261px;
+    left: 1982px;
+  }
+}
+
 #box1 {
   -webkit-animation-delay: 8s;
+  -webkit-animation-name: expand1;
+}
+
+#box1 {
   -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: expand1;
 }
 
 @-webkit-keyframes expand1 {
@@ -361,6 +386,74 @@ to { background-position: -500px; }
   from {
     top: 10px;
     left: 765px;
+    width: 500px;
+    height: 170px;
+  }
+
+  to {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+#box2 {
+  -webkit-animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes expand2 {
+  from {
+    width: 30px;
+    height: 30px;
+  }
+
+  to {
+    top: 10px;
+    left: 1265px;
+    width: 500px;
+    height: 170px;
+  }
+}
+
+@-webkit-keyframes shrink2 {
+  /* reverse from expand */
+  from {
+    top: 10px;
+    left: 1265px;
+    width: 500px;
+    height: 170px;
+  }
+
+  to {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+#box3 {
+  -webkit-animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes expand3 {
+  from {
+    width: 30px;
+    height: 30px;
+  }
+
+  to {
+    top: 10px;
+    left: 1765px;
+    width: 500px;
+    height: 170px;
+  }
+}
+
+@-webkit-keyframes shrink3 {
+  /* reverse from expand */
+  from {
+    top: 10px;
+    left: 1765px;
     width: 500px;
     height: 170px;
   }

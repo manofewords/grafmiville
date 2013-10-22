@@ -19,12 +19,19 @@ function getBoxHandler(iteration, html) {
 
 function getButtonHandler(iteration) {
   return function() {
+    // shrink currently expanded box
     var style = document.getElementById("box" + iteration).style;
     style.webkitAnimationName = "shrink" + iteration;
     style.webkitAnimationDelay = 0; // do it now!
 
+    // move Manu
     style = document.getElementById("manu").style;
     style.webkitAnimationName = "jumpnrun" + (iteration + 1);
     style.webkitAnimationDelay = 0; // do it now!
+
+    // expand next box
+    style = document.getElementById("box" + (iteration + 1)).style;
+    style.webkitAnimationName = "expand" + (iteration + 1);
+    style.webkitAnimationDelay = "3s"; // duration of Jump'n'Run animation (TODO: is where a way not to duplicate this from .scss file?)
   };
 }
