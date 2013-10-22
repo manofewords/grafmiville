@@ -10,7 +10,7 @@
 // style variables
 
 $darkRed: #ce0c17;
-$fontSize: 18px;
+$fontSize: 18px; // match the PDF
 $boxSize: 30px;
 $boxBorderSize: 2px;
 $defaultMargin: 50px;
@@ -21,6 +21,8 @@ $box1_x: 1000px;
 $box2_x: 1500px;
 $box3_x: 2000px;
 $box_y: 190px;
+$manu_x: 758px; // match to PDF
+$manu_y: 261px; // match to PDF
 
 // animation variables
 
@@ -32,9 +34,9 @@ $animDurationToExpandBox: 2s;
 
 // special fonts
 
-@include font-face("Solex", font-files("solexreg-webfont.woff"));
+@include font-face("Solex", font-files("solexreg-webfont.woff")); // yup, I haven't paid for it, but it's only used for this job application (so it's life expectancy is about 10min)
 $font-family: "Solex";
-@include font-face("JandA", font-files("jandasafeandsoundsolid-webfont.woff"));
+@include font-face("JandA", font-files("jandasafeandsoundsolid-webfont.woff")); // same here
 $font-family: "JandA";
 
 body {
@@ -57,8 +59,8 @@ header {
 h1 {
   font-family: "JandA";
   color: $darkRed;
-  font-size: 21px;
-  margin: 0 0 1em 0;
+  font-size: 21px; // match the PDF
+  margin: 0 0 1em 0; // match the PDF
 }
 
 ul {
@@ -142,6 +144,7 @@ li {
 
 @-webkit-keyframes grass {
   to {
+    // TODO: add texture
     background: green;
     height: 100px; // arbitrary
     width: 2300px; // arbitrary
@@ -179,8 +182,8 @@ li {
   height: image-height("arrows.png");
   background-image: url("../images/arrows.png");
   position: absolute;
-  top: 208px;
-  left: 756px;
+  top: 208px; // match the PDF
+  left: 756px; // match the PDF
 
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes;
   -webkit-animation-duration: $animDurationToMakeArrowsDisappear;
@@ -213,58 +216,46 @@ to { background-position: -500px; }
   height: image-height("manu.png");
   background-image: url("../images/manu.png");
   position: absolute;
-}
 
-#manu {
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear;
   -webkit-animation-duration: $animDurationToRunAndJump;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: jumpnrun;
 }
 
-@-webkit-keyframes jumpnrun {
-  from {
-    top: 261px;
-    left: 758px;
-  }
-  /* run for 2/3 of the time */
-  66% {
-    top: 261px;
-    left: 985px; /* TBD */
-  }
-  /* jump */
-  82% {
-    top: 227px;
-    left: 985px; /* TBD */
-  }
-  to {
-    top: 261px;
-    left: 985px; /* TBD */
-  }
+@mixin runAndJumpAnimation($name, $start_x, $end_x) {
+    @-webkit-keyframes $name {
+      from {
+        top: $manu_y;
+        left: $start_x;
+      }
+      // run for 2/3 of the time
+      66% {
+        top: $manu_y;
+        left: $end_x;
+      }
+      // jump
+      82% {
+        top: $box_y + $boxSize + 2 * $boxBorderSize + 3px; // there are 3px of white on top of Manu's head in manu.png (TODO: remove?)
+        left: $end_x;
+      }
+      to {
+        top: $manu_y;
+        left: $end_x;
+      }
+    }
 }
 
-@-webkit-keyframes jumpnrun2 {
-  from {
-    top: 261px;
-    left: 985px;
-  }
-  /* run for 2/3 of the time */
-  66% {
-    top: 261px;
-    left: 1485px; /* TBD */
-  }
-  /* jump */
-  82% {
-    top: 227px;
-    left: 1485px; /* TBD */
-  }
-  to {
-    top: 261px;
-    left: 1485px; /* TBD */
-  }
+@function afterRun_x($targetBox_x) {
+    @return ($targetBox_x + $boxSize / 2 + $boxBorderSize) - (image-width("manu.png") / 2);
 }
 
-/* blow up box1 */
+$afterFirstRun_x: afterRun_x($box1_x);
+@include runAndJumpAnimation("jumpnrun", $manu_x, $afterFirstRun_x);
+
+$afterSecondRun_x: afterRun_x($box2_x);
+@include runAndJumpAnimation("jumpnrun2", $afterFirstRun_x, $afterSecondRun_x); // triggered via JavaScript when button is clicked
+
 #box1 {
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + $animDurationToRunAndJump;
   -webkit-animation-duration: $animDurationToExpandBox;
