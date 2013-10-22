@@ -68,7 +68,7 @@
           switch(e.animationName) {
             case "expand":
               box1.className += " expanded";
-              box1.innerHTML = "<h1>Mon profil</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac ultrices justo. Curabitur dui odio, aliquam sed hendrerit eu, scelerisque sed urna. Integer mollis libero nec arcu tempus, pulvinar hendrerit ligula sagittis. Morbi tincidunt posuere nibh nec elementum. Donec in nibh risus. Morbi magna quam, gravida imperdiet lacus non, placerat euismod ipsum. Nam eu metus elementum, molestie elit in, tristique diam. Integer faucibus, est aliquam ornare consectetur, risus velit blandit neque, sed vestibulum magna leo sit amet erat.</p><p>Nam vestibulum, elit sit amet auctor sagittis, dui massa tincidunt orci, nec consequat risus quam non dui. Proin ut mi aliquet velit eleifend cursus eget faucibus lorem. Maecenas fringilla metus quis quam ultrices imperdiet. Donec in mollis eros, eu venenatis dui. Nam non mauris elit. Cras sollicitudin urna sit amet ultrices rutrum. Quisque dignissim leo orci, ac pulvinar eros egestas quis. Aenean convallis, velit eget accumsan ornare, nulla leo semper eros, at vehicula purus risus semper odio. Praesent id magna non metus molestie porta. Suspendisse pellentesque aliquam metus, placerat vestibulum massa tincidunt et. Cras nec mattis massa. Ut eget augue eu metus interdum dapibus vitae feugiat lacus. Integer at odio nibh. Duis vel ullamcorper nisi. Ut mollis massa felis, sed laoreet ligula gravida eget. Duis feugiat felis sit amet risus dictum, sit amet condimentum velit mollis.</p><button class=\"nextButton\" id=\"box1Button\" onclick=\"jumprun2()\">Suivant</button>";
+              box1.innerHTML = "<h1>Mon profil</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac ultrices justo. Curabitur dui odio, aliquam sed hendrerit eu, scelerisque sed urna. Integer mollis libero nec arcu tempus, pulvinar hendrerit ligula sagittis. Morbi tincidunt posuere nibh nec elementum. Donec in nibh risus. Morbi magna quam, gravida imperdiet lacus non, placerat euismod ipsum. Nam eu metus elementum, molestie elit in, tristique diam. Integer faucibus, est aliquam ornare consectetur, risus velit blandit neque, sed vestibulum magna leo sit amet erat.</p><p>Nam vestibulum, elit sit amet auctor sagittis, dui massa tincidunt orci, nec consequat risus quam non dui. Proin ut mi aliquet velit eleifend cursus eget faucibus lorem. Maecenas fringilla metus quis quam ultrices imperdiet. Donec in mollis eros, eu venenatis dui. Nam non mauris elit. Cras sollicitudin urna sit amet ultrices rutrum. Quisque dignissim leo orci, ac pulvinar eros egestas quis. Aenean convallis, velit eget accumsan ornare, nulla leo semper eros, at vehicula purus risus semper odio. Praesent id magna non metus molestie porta. Suspendisse pellentesque aliquam metus, placerat vestibulum massa tincidunt et. Cras nec mattis massa. Ut eget augue eu metus interdum dapibus vitae feugiat lacus. Integer at odio nibh. Duis vel ullamcorper nisi. Ut mollis massa felis, sed laoreet ligula gravida eget. Duis feugiat felis sit amet risus dictum, sit amet condimentum velit mollis.</p><button class=\"nextButton\" id=\"box1Button\" onclick=\"jumpnrun2()\">Suivant</button>";
               break;
             case "shrink":
               box1.className = "box";
@@ -83,9 +83,14 @@
         box1.addEventListener("webkitAnimationStart", handler, false); // idiots...
       }
 
-      function jumprun2() {
-        document.getElementById("box1").style.webkitAnimationName = "shrink";
-        document.getElementById("manu").style.webkitAnimationName = "jumpnrun2";
+      function jumpnrun2() {
+        var style = document.getElementById("box1").style;
+        style.webkitAnimationName = "shrink";
+        style.webkitAnimationDelay = 0; // do it now!
+
+        style = document.getElementById("manu").style;
+        style.webkitAnimationName = "jumpnrun2";
+        style.webkitAnimationDelay = 0;
       }
     </script>
   </body>
