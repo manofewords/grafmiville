@@ -163,6 +163,13 @@ li {
   font-size: $boxSize;
   position: absolute;
   top: $box_y;
+
+    &.expanded {
+      font-size: $fontSize;
+      text-align: left;
+      overflow-y: scroll;
+      padding: 20px;
+    }
 }
 
 #box1 {
@@ -220,7 +227,7 @@ to { background-position: -500px; }
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear;
   -webkit-animation-duration: $animDurationToRunAndJump;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: jumpnrun;
+  -webkit-animation-name: jumpnrun1;
 }
 
 @mixin runAndJumpAnimation($name, $start_x, $end_x) {
@@ -251,7 +258,7 @@ to { background-position: -500px; }
 }
 
 $afterFirstRun_x: afterRun_x($box1_x);
-@include runAndJumpAnimation("jumpnrun", $manu_x, $afterFirstRun_x);
+@include runAndJumpAnimation("jumpnrun1", $manu_x, $afterFirstRun_x);
 
 $afterSecondRun_x: afterRun_x($box2_x);
 @include runAndJumpAnimation("jumpnrun2", $afterFirstRun_x, $afterSecondRun_x); // triggered via JavaScript when button is clicked
@@ -260,10 +267,10 @@ $afterSecondRun_x: afterRun_x($box2_x);
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + $animDurationToRunAndJump;
   -webkit-animation-duration: $animDurationToExpandBox;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: expand;
+  -webkit-animation-name: expand1;
 }
 
-@-webkit-keyframes expand {
+@-webkit-keyframes expand1 {
   from {
     width: $boxSize;
     height: $boxSize;
@@ -276,7 +283,7 @@ $afterSecondRun_x: afterRun_x($box2_x);
   }
 }
 
-@-webkit-keyframes shrink {
+@-webkit-keyframes shrink1 {
   /* reverse from expand */
   from {
     top: 10px;
@@ -288,11 +295,4 @@ $afterSecondRun_x: afterRun_x($box2_x);
     width: $boxSize;
     height: $boxSize;
   }
-}
-
-#box1.expanded {
-  font-size: $fontSize;
-  text-align: left;
-  overflow-y: scroll;
-  padding: 20px;
 }

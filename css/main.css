@@ -226,6 +226,12 @@ li:before {
   position: absolute;
   top: 190px;
 }
+.box.expanded {
+  font-size: 18px;
+  text-align: left;
+  overflow-y: scroll;
+  padding: 20px;
+}
 
 #box1 {
   left: 1000px;
@@ -280,10 +286,10 @@ to { background-position: -500px; }
   -webkit-animation-delay: 5s;
   -webkit-animation-duration: 3s;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: jumpnrun;
+  -webkit-animation-name: jumpnrun1;
 }
 
-@-webkit-keyframes jumpnrun {
+@-webkit-keyframes jumpnrun1 {
   from {
     top: 261px;
     left: 758px;
@@ -331,10 +337,10 @@ to { background-position: -500px; }
   -webkit-animation-delay: 8s;
   -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: expand;
+  -webkit-animation-name: expand1;
 }
 
-@-webkit-keyframes expand {
+@-webkit-keyframes expand1 {
   from {
     width: 30px;
     height: 30px;
@@ -350,7 +356,7 @@ to { background-position: -500px; }
   }
 }
 
-@-webkit-keyframes shrink {
+@-webkit-keyframes shrink1 {
   /* reverse from expand */
   from {
     top: 10px;
@@ -363,11 +369,4 @@ to { background-position: -500px; }
     width: 30px;
     height: 30px;
   }
-}
-
-#box1.expanded {
-  font-size: 18px;
-  text-align: left;
-  overflow-y: scroll;
-  padding: 20px;
 }
