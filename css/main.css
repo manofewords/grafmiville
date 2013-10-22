@@ -2,7 +2,6 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,64 +23,51 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 @font-face {
   font-family: "Solex";
-  src: url("../fonts/solexreg-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+  src: url('../fonts/solexreg-webfont.woff') format('woff');
 }
 
 @font-face {
   font-family: "JandA";
-  src: url("../fonts/jandasafeandsoundsolid-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+  src: url('../fonts/jandasafeandsoundsolid-webfont.woff') format('woff');
 }
 
-/* line 22, ../sass/main.scss */
 body {
   font-family: "Solex";
   color: #777472;
@@ -89,19 +75,28 @@ body {
   position: relative;
 }
 
-/* line 29, ../sass/main.scss */
 a {
   color: #ce0c17;
 }
+a:visited {
+  color: #ce0c17;
+}
+a:focus {
+  color: #ce0c17;
+}
+a:hover {
+  color: #ce0c17;
+}
+a:active {
+  color: #ce0c17;
+}
 
-/* line 33, ../sass/main.scss */
 header {
   background: url("../images/header.png");
   width: 894px;
   height: 475px;
 }
 
-/* line 39, ../sass/main.scss */
 h1 {
   font-family: "JandA";
   color: #ce0c17;
@@ -109,28 +104,23 @@ h1 {
   margin: 0 0 1em 0;
 }
 
-/* line 46, ../sass/main.scss */
 ul {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
 
-/* line 52, ../sass/main.scss */
 li {
   padding-left: 1em;
   text-indent: -1em;
   line-height: 1.5em;
 }
-
-/* line 58, ../sass/main.scss */
 li:before {
   content: "•";
   padding-right: 5px;
   color: #ce0c17;
 }
 
-/* line 67, ../sass/main.scss */
 #requirements,
 #profile,
 #job,
@@ -142,7 +132,6 @@ li:before {
   position: absolute;
 }
 
-/* line 76, ../sass/main.scss */
 #requirements {
   background: #f2f1ec;
   width: 894px;
@@ -150,92 +139,73 @@ li:before {
   top: 475px;
 }
 
-/* line 85, ../sass/main.scss */
 #profile,
 #job,
 #application {
   left: 80px;
 }
 
-/* line 89, ../sass/main.scss */
 #profile {
   top: 50px;
-  /* relative to #requirements */
   -webkit-animation-name: moveToBox1;
 }
 
 @-webkit-keyframes moveToBox1 {
-  /* line 95, ../sass/main.scss */
   75% {
     opacity: 1;
   }
 
-  /* line 98, ../sass/main.scss */
   to {
     font-size: 0;
     opacity: 0;
     top: -160px;
-    /* TBD */
     left: 1000px;
-    /* see #box1 */
   }
 }
 
-/* line 106, ../sass/main.scss */
 #job {
   top: 304px;
-  /* #profile's top + #profile's height + margin = 50px + 204px + 50px */
+  /* #profile's top + #profile's height + margin = $defaultMargin + 204px + $defaultMargin */
   -webkit-animation-name: moveToBox2;
 }
 
 @-webkit-keyframes moveToBox2 {
-  /* line 112, ../sass/main.scss */
   75% {
     opacity: 1;
   }
 
-  /* line 115, ../sass/main.scss */
   to {
     font-size: 0;
     opacity: 0;
     top: -160px;
-    /* TBD */
     left: 1500px;
-    /* see #box2 */
   }
 }
 
-/* line 123, ../sass/main.scss */
 #application {
   top: 504px;
-  /* #job's top + #job's height + margin = 304px + 150px + 50px */
+  /* #job's top + #job's height + margin = 304px + 150px + $defaultMargin */
   -webkit-animation-name: moveToBox3;
 }
 
 @-webkit-keyframes moveToBox3 {
-  /* line 129, ../sass/main.scss */
   75% {
     opacity: 1;
   }
 
-  /* line 132, ../sass/main.scss */
   to {
     font-size: 0;
     opacity: 0;
     top: -160px;
-    /* TBD */
     left: 2000px;
-    /* see #box3 */
   }
 }
 
-/* line 140, ../sass/main.scss */
 #requirements {
   -webkit-animation-name: grass;
 }
 
 @-webkit-keyframes grass {
-  /* line 145, ../sass/main.scss */
   to {
     background: green;
     height: 100px;
@@ -244,7 +214,6 @@ li:before {
   }
 }
 
-/* line 153, ../sass/main.scss */
 .box {
   border: 2px solid black;
   border-radius: 5px;
@@ -258,22 +227,18 @@ li:before {
   top: 190px;
 }
 
-/* line 166, ../sass/main.scss */
 #box1 {
   left: 1000px;
 }
 
-/* line 170, ../sass/main.scss */
 #box2 {
   left: 1500px;
 }
 
-/* line 174, ../sass/main.scss */
 #box3 {
   left: 2000px;
 }
 
-/* line 178, ../sass/main.scss */
 #arrows {
   width: 70px;
   height: 50px;
@@ -282,14 +247,12 @@ li:before {
   top: 208px;
   left: 756px;
   -webkit-animation-delay: 4s;
-  /* 2 + 2 */
   -webkit-animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: disappear;
 }
 
 @-webkit-keyframes disappear {
-  /* line 193, ../sass/main.scss */
   to {
     opacity: 0;
   }
@@ -309,7 +272,6 @@ from { background-position:    0px; }
 to { background-position: -500px; }
 }
 */
-/* line 212, ../sass/main.scss */
 #manu {
   width: 70px;
   height: 100px;
@@ -317,25 +279,20 @@ to { background-position: -500px; }
   position: absolute;
 }
 
-/* line 219, ../sass/main.scss */
 #manu {
   -webkit-animation-delay: 5s;
-  /* 2 + 2 + 1 */
   -webkit-animation-duration: 3s;
-  /* 2s run, 1s jump */
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: jumpnrun;
 }
 
 @-webkit-keyframes jumpnrun {
-  /* line 227, ../sass/main.scss */
   from {
     top: 261px;
     left: 758px;
   }
 
   /* run for 2/3 of the time */
-  /* line 232, ../sass/main.scss */
   66% {
     top: 261px;
     left: 985px;
@@ -343,14 +300,12 @@ to { background-position: -500px; }
   }
 
   /* jump */
-  /* line 237, ../sass/main.scss */
   82% {
     top: 227px;
     left: 985px;
     /* TBD */
   }
 
-  /* line 241, ../sass/main.scss */
   to {
     top: 261px;
     left: 985px;
@@ -359,14 +314,12 @@ to { background-position: -500px; }
 }
 
 @-webkit-keyframes jumpnrun2 {
-  /* line 248, ../sass/main.scss */
   from {
     top: 261px;
     left: 985px;
   }
 
   /* run for 2/3 of the time */
-  /* line 253, ../sass/main.scss */
   66% {
     top: 261px;
     left: 1485px;
@@ -374,14 +327,12 @@ to { background-position: -500px; }
   }
 
   /* jump */
-  /* line 258, ../sass/main.scss */
   82% {
     top: 227px;
     left: 1485px;
     /* TBD */
   }
 
-  /* line 262, ../sass/main.scss */
   to {
     top: 261px;
     left: 1485px;
@@ -390,36 +341,31 @@ to { background-position: -500px; }
 }
 
 /* blow up box1 */
-/* line 269, ../sass/main.scss */
 #box1 {
   -webkit-animation-delay: 8s;
-  /* 2 + 2 + 1 + 3 */
   -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: expand;
 }
 
 @-webkit-keyframes expand {
-  /* line 277, ../sass/main.scss */
   from {
     width: 30px;
     height: 30px;
   }
 
-  /* line 281, ../sass/main.scss */
   to {
     top: 10px;
     left: 765px;
-    /* #box1's left - 1/2 this width + 1/2 .box width = 1000px - 250px + 15px */
+    /* #box1's left - 1/2 this width + 1/2 .box width = $box1_x - 250px + 15px */
     width: 500px;
     height: 170px;
-    /* .box's top - this top + .box's height - .expanded's padding = 190px - 10px + 30px - 40px */
+    /* .box's top - this top + .box's height - .expanded's padding = $box_y - 10px + 30px - 40px */
   }
 }
 
 @-webkit-keyframes shrink {
   /* reverse from expand */
-  /* line 291, ../sass/main.scss */
   from {
     top: 10px;
     left: 765px;
@@ -427,14 +373,12 @@ to { background-position: -500px; }
     height: 170px;
   }
 
-  /* line 297, ../sass/main.scss */
   to {
     width: 30px;
     height: 30px;
   }
 }
 
-/* line 303, ../sass/main.scss */
 #box1.expanded {
   font-size: 18px;
   text-align: left;

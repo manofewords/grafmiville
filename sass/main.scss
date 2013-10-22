@@ -4,41 +4,59 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/typography/links/link-colors";
+@import "compass/css3/font-face";
 
-@font-face {
-  font-family: "Solex";
-  src: url("../fonts/solexreg-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+// style variables
 
-@font-face {
-  font-family: "JandA";
-  src: url("../fonts/jandasafeandsoundsolid-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+$darkRed: #ce0c17;
+$fontSize: 18px;
+$boxSize: 30px;
+$boxBorderSize: 2px;
+$defaultMargin: 50px;
+
+// positioning variables
+
+$box1_x: 1000px;
+$box2_x: 1500px;
+$box3_x: 2000px;
+$box_y: 190px;
+
+// animation variables
+
+$animStart: 2s; // first animation starts after $animStart seconds
+$animDurationToMoveOriginalTextToBoxes: 2s;
+$animDurationToMakeArrowsDisappear: 1s;
+$animDurationToRunAndJump: 3s; // 2s run, 1s jump
+$animDurationToExpandBox: 2s;
+
+// special fonts
+
+@include font-face("Solex", font-files("solexreg-webfont.woff"));
+$font-family: "Solex";
+@include font-face("JandA", font-files("jandasafeandsoundsolid-webfont.woff"));
+$font-family: "JandA";
 
 body {
   font-family: "Solex";
   color: #777472;
-  font-size: 18px;
+  font-size: $fontSize;
   position: relative;
 }
 
 a {
-  color: #ce0c17;
+  @include link-colors($darkRed, $darkRed, $darkRed, $darkRed, $darkRed);
 }
 
 header {
   background: url("../images/header.png");
-  width: 894px;
-  height: 475px;
+  width: image-width("header.png");
+  height: image-height("header.png");
 }
 
 h1 {
   font-family: "JandA";
-  color: #ce0c17;
+  color: $darkRed;
   font-size: 21px;
   margin: 0 0 1em 0;
 }
@@ -53,20 +71,20 @@ li {
   padding-left: 1em;
   text-indent: -1em;
   line-height: 1.5em;
-}
 
-li:before {
-  content: "•";
-  padding-right: 5px;
-  color: #ce0c17;
+    &:before {
+      content: "•";
+      padding-right: 5px;
+      color: $darkRed;
+    }
 }
 
 #requirements,
 #profile,
 #job,
 #application {
-  -webkit-animation-delay: 2s;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: $animStart;
+  -webkit-animation-duration: $animDurationToMoveOriginalTextToBoxes;
   -webkit-animation-fill-mode: both;
 
   /* this is dumb, but it seems impossible to animate anything else than absolute positionned elements */
@@ -74,68 +92,49 @@ li:before {
 }
 
 #requirements {
-  background: #f2f1ec;
-  width: 894px;
-  height: 600px;
-  top: 475px;
+  background: #f2f1ec; // match PDF file
+  width: image-width("header.png");
+  height: 600px; // arbitrary
+  top: image-height("header.png");
 }
 
 #profile,
 #job,
 #application {
-  left: 80px;
+  left: 80px; // match PDF file
+}
+
+@mixin moveToBoxAnimation($name, $x) {
+    @-webkit-keyframes $name {
+      75% {
+        opacity: 1;
+      }
+      to {
+        font-size: 0;
+        opacity: 0;
+        top: -160px; // TBD
+        left: $x;
+      }
+    }
 }
 
 #profile {
-  top: 50px; /* relative to #requirements */
+  top: $defaultMargin; // relative to #requirements
   -webkit-animation-name: moveToBox1;
 }
-
-@-webkit-keyframes moveToBox1 {
-  75% {
-    opacity: 1;
-  }
-  to {
-    font-size: 0;
-    opacity: 0;
-    top: -160px; /* TBD */
-    left: 1000px; /* see #box1 */
-  }
-}
+@include moveToBoxAnimation("moveToBox1", $box1_x);
 
 #job {
-  top: 304px; /* #profile's top + #profile's height + margin = 50px + 204px + 50px */
+  top: 304px; /* #profile's top + #profile's height + margin = $defaultMargin + 204px + $defaultMargin */
   -webkit-animation-name: moveToBox2;
 }
-
-@-webkit-keyframes moveToBox2 {
-  75% {
-    opacity: 1;
-  }
-  to {
-    font-size: 0;
-    opacity: 0;
-    top: -160px; /* TBD */
-    left: 1500px; /* see #box2 */
-  }
-}
+@include moveToBoxAnimation("moveToBox2", $box2_x);
 
 #application {
-  top: 504px; /* #job's top + #job's height + margin = 304px + 150px + 50px */
+  top: 504px; /* #job's top + #job's height + margin = 304px + 150px + $defaultMargin */
   -webkit-animation-name: moveToBox3;
 }
-
-@-webkit-keyframes moveToBox3 {
-  75% {
-    opacity: 1;
-  }
-  to {
-    font-size: 0;
-    opacity: 0;
-    top: -160px; /* TBD */
-    left: 2000px; /* see #box3 */
-  }
-}
+@include moveToBoxAnimation("moveToBox3", $box3_x);
 
 #requirements {
   -webkit-animation-name: grass;
@@ -144,47 +143,47 @@ li:before {
 @-webkit-keyframes grass {
   to {
     background: green;
-    height: 100px;
-    width: 2300px;
-    top: 353px;
+    height: 100px; // arbitrary
+    width: 2300px; // arbitrary
+    top: 353px; // to more or less touch the feet of the people in header.png
   }
 }
 
 .box {
-  border: 2px solid black;
+  border: $boxBorderSize solid black;
   border-radius: 5px;
   background: #ffc70c;
   color: black;
-  width: 30px;
-  line-height: 30px;
+  width: $boxSize;
+  line-height: $boxSize;
   text-align: center;
-  font-size: 30px;
+  font-size: $boxSize;
   position: absolute;
-  top: 190px;
+  top: $box_y;
 }
 
 #box1 {
-  left: 1000px;
+  left: $box1_x;
 }
 
 #box2 {
-  left: 1500px;
+  left: $box2_x;
 }
 
 #box3 {
-  left: 2000px;
+  left: $box3_x;
 }
 
 #arrows {
-  width: 70px;
-  height: 50px;
+  width: image-width("arrows.png");
+  height: image-height("arrows.png");
   background-image: url("../images/arrows.png");
   position: absolute;
   top: 208px;
   left: 756px;
 
-  -webkit-animation-delay: 4s; /* 2 + 2 */
-  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes;
+  -webkit-animation-duration: $animDurationToMakeArrowsDisappear;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: disappear;
 }
@@ -210,15 +209,15 @@ to { background-position: -500px; }
 }
 */
 #manu {
-  width: 70px;
-  height: 100px;
+  width: image-width("manu.png");
+  height: image-height("manu.png");
   background-image: url("../images/manu.png");
   position: absolute;
 }
 
 #manu {
-  -webkit-animation-delay: 5s; /* 2 + 2 + 1 */
-  -webkit-animation-duration: 3s; /* 2s run, 1s jump */
+  -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear;
+  -webkit-animation-duration: $animDurationToRunAndJump;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: jumpnrun;
 }
@@ -267,22 +266,22 @@ to { background-position: -500px; }
 
 /* blow up box1 */
 #box1 {
-  -webkit-animation-delay: 8s; /* 2 + 2 + 1 + 3 */
-  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + $animDurationToRunAndJump;
+  -webkit-animation-duration: $animDurationToExpandBox;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: expand;
 }
 
 @-webkit-keyframes expand {
   from {
-    width: 30px;
-    height: 30px;
+    width: $boxSize;
+    height: $boxSize;
   }
   to {
     top: 10px;
-    left: 765px; /* #box1's left - 1/2 this width + 1/2 .box width = 1000px - 250px + 15px */
+    left: 765px; /* #box1's left - 1/2 this width + 1/2 .box width = $box1_x - 250px + 15px */
     width: 500px;
-    height: 170px; /* .box's top - this top + .box's height - .expanded's padding = 190px - 10px + 30px - 40px */
+    height: 170px; /* .box's top - this top + .box's height - .expanded's padding = $box_y - 10px + 30px - 40px */
   }
 }
 
@@ -295,13 +294,13 @@ to { background-position: -500px; }
     height: 170px; 
   }
   to {
-    width: 30px;
-    height: 30px;
+    width: $boxSize;
+    height: $boxSize;
   }
 }
 
 #box1.expanded {
-  font-size: 18px;
+  font-size: $fontSize;
   text-align: left;
   overflow-y: scroll;
   padding: 20px;
