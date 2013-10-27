@@ -32,6 +32,6 @@ function getButtonHandler(iteration) {
     // expand next box
     style = document.getElementById("box" + (iteration + 1)).style;
     style.webkitAnimationName = "expand" + (iteration + 1);
-    style.webkitAnimationDelay = "3s"; // duration of Jump'n'Run animation (TODO: is where a way not to duplicate this from .scss file?)
+    style.webkitAnimationDelay = "3s"; // duration of Jump'n'Run animation (TODO: is there a way not to duplicate this from .scss file?)
   };
 }

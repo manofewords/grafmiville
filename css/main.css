@@ -128,7 +128,7 @@ li:before {
   -webkit-animation-delay: 2s;
   -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: both;
-  /* this is dumb, but it seems impossible to animate anything else than absolute positionned elements */
+  /* this sucks, but it seems impossible to animate anything else than absolutely positionned elements */
   position: absolute;
 }
 
@@ -165,7 +165,6 @@ li:before {
 
 #job {
   top: 304px;
-  /* #profile's top + #profile's height + margin = $defaultMargin + 204px + $defaultMargin */
   -webkit-animation-name: moveToBox2;
 }
 
@@ -184,7 +183,6 @@ li:before {
 
 #application {
   top: 504px;
-  /* #job's top + #job's height + margin = 304px + 150px + $defaultMargin */
   -webkit-animation-name: moveToBox3;
 }
 
@@ -374,15 +372,12 @@ to { background-position: -500px; }
   to {
     top: 10px;
     left: 765px;
-    /* #box1's left - 1/2 this width + 1/2 .box width = $box1_x - 250px + 15px */
     width: 500px;
     height: 170px;
-    /* .box's top - this top + .box's height - .expanded's padding = $box_y - 10px + 30px - 40px */
   }
 }
 
 @-webkit-keyframes shrink1 {
-  /* reverse from expand */
   from {
     top: 10px;
     left: 765px;
@@ -416,7 +411,6 @@ to { background-position: -500px; }
 }
 
 @-webkit-keyframes shrink2 {
-  /* reverse from expand */
   from {
     top: 10px;
     left: 1265px;
@@ -450,7 +444,6 @@ to { background-position: -500px; }
 }
 
 @-webkit-keyframes shrink3 {
-  /* reverse from expand */
   from {
     top: 10px;
     left: 1765px;

@@ -14,6 +14,7 @@ $fontSize: 18px; // match the PDF
 $boxSize: 30px;
 $boxBorderSize: 2px;
 $defaultMargin: 50px;
+$expandedBoxPadding: 20px;
 
 // positioning variables
 
@@ -74,11 +75,11 @@ li {
   text-indent: -1em;
   line-height: 1.5em;
 
-    &:before {
-      content: "•";
-      padding-right: 5px;
-      color: $darkRed;
-    }
+  &:before {
+    content: "•";
+    padding-right: 5px;
+    color: $darkRed;
+  }
 }
 
 #requirements,
@@ -89,7 +90,7 @@ li {
   -webkit-animation-duration: $animDurationToMoveOriginalTextToBoxes;
   -webkit-animation-fill-mode: both;
 
-  /* this is dumb, but it seems impossible to animate anything else than absolute positionned elements */
+  /* this sucks, but it seems impossible to animate anything else than absolutely positionned elements */
   position: absolute;
 }
 
@@ -120,20 +121,22 @@ li {
     }
 }
 
+$profileHeight: 204px;
 #profile {
   top: $defaultMargin; // relative to #requirements
   -webkit-animation-name: moveToBox1;
 }
 @include moveToBoxAnimation("moveToBox1", $box1_x);
 
+$jobHeight: 150px;
 #job {
-  top: 304px; /* #profile's top + #profile's height + margin = $defaultMargin + 204px + $defaultMargin */
+  top: $defaultMargin + $profileHeight + $defaultMargin;
   -webkit-animation-name: moveToBox2;
 }
 @include moveToBoxAnimation("moveToBox2", $box2_x);
 
 #application {
-  top: 504px; /* #job's top + #job's height + margin = 304px + 150px + $defaultMargin */
+  top: $defaultMargin + $profileHeight + $defaultMargin + $jobHeight + $defaultMargin;
   -webkit-animation-name: moveToBox3;
 }
 @include moveToBoxAnimation("moveToBox3", $box3_x);
@@ -148,7 +151,7 @@ li {
     background: green;
     height: 100px; // arbitrary
     width: 2500px; // arbitrary
-    top: 353px; // to more or less touch the feet of the people in header.png
+    top: 353px; // to more or less touch the feet of the cartoon characters in header.png
   }
 }
 
@@ -164,12 +167,12 @@ li {
   position: absolute;
   top: $box_y;
 
-    &.expanded {
-      font-size: $fontSize;
-      text-align: left;
-      overflow-y: scroll;
-      padding: 20px;
-    }
+  &.expanded {
+    font-size: $fontSize;
+    text-align: left;
+    overflow-y: scroll;
+    padding: $expandedBoxPadding;
+  }
 }
 
 #box1 {
@@ -273,98 +276,45 @@ $afterThirdRun_x: afterRun_x($box3_x);
 
 // TODO: refactor
 
-#box1 {
-  -webkit-animation-duration: $animDurationToExpandBox;
-  -webkit-animation-fill-mode: both;
-}
+@mixin boxResizeAnimation($iteration, $box_x) {
+  $expandedWidth: 500px;
+  $expanded_y: 10px;
 
-@-webkit-keyframes expand1 {
-  from {
-    width: $boxSize;
-    height: $boxSize;
-  }
-  to {
-    top: 10px;
-    left: 765px; /* #box1's left - 1/2 this width + 1/2 .box width = $box1_x - 250px + 15px */
-    width: 500px;
-    height: 170px; /* .box's top - this top + .box's height - .expanded's padding = $box_y - 10px + 30px - 40px */
-  }
-}
+  $left: $box_x - $expandedWidth / 2 + $boxSize / 2;
+  $height: $box_y - $expanded_y + $boxSize - 2 * $expandedBoxPadding;
 
-@-webkit-keyframes shrink1 {
-  /* reverse from expand */
-  from {
-    top: 10px;
-    left: 765px; 
-    width: 500px;
-    height: 170px; 
+  #box#{$iteration} {
+    -webkit-animation-duration: $animDurationToExpandBox;
+    -webkit-animation-fill-mode: both;
   }
-  to {
-    width: $boxSize;
-    height: $boxSize;
-  }
-}
 
-#box2 {
-  -webkit-animation-duration: $animDurationToExpandBox;
-  -webkit-animation-fill-mode: both;
-}
+  @-webkit-keyframes expand#{$iteration} {
+    from {
+      width: $boxSize;
+      height: $boxSize;
+    }
+    to {
+      top: $expanded_y;
+      left: $left;
+      width: $expandedWidth;
+      height: $height;
+    }
+  }
 
-@-webkit-keyframes expand2 {
-  from {
-    width: $boxSize;
-    height: $boxSize;
-  }
-  to {
-    top: 10px;
-    left: 1265px; 
-    width: 500px;
-    height: 170px; 
-  }
-}
-
-@-webkit-keyframes shrink2 {
-  /* reverse from expand */
-  from {
-    top: 10px;
-    left: 1265px; 
-    width: 500px;
-    height: 170px; 
-  }
-  to {
-    width: $boxSize;
-    height: $boxSize;
+  @-webkit-keyframes shrink#{$iteration} {
+    // reverse from expand. Is there a better way? Tried without success with animation-direction: reverse
+    from {
+      top: $expanded_y;
+      left: $left;
+      width: $expandedWidth;
+      height: $height; 
+    }
+    to {
+      width: $boxSize;
+      height: $boxSize;
+    }
   }
 }
-
-#box3 {
-  -webkit-animation-duration: $animDurationToExpandBox;
-  -webkit-animation-fill-mode: both;
-}
-
-@-webkit-keyframes expand3 {
-  from {
-    width: $boxSize;
-    height: $boxSize;
-  }
-  to {
-    top: 10px;
-    left: 1765px; 
-    width: 500px;
-    height: 170px; 
-  }
-}
-
-@-webkit-keyframes shrink3 {
-  /* reverse from expand */
-  from {
-    top: 10px;
-    left: 1765px; 
-    width: 500px;
-    height: 170px; 
-  }
-  to {
-    width: $boxSize;
-    height: $boxSize;
-  }
-}
+@include boxResizeAnimation(1, $box1_x);
+@include boxResizeAnimation(2, $box2_x);
+@include boxResizeAnimation(3, $box3_x);
