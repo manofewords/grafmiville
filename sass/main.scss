@@ -24,6 +24,7 @@ $box3_x: 2000px;
 $box_y: 190px;
 $manu_x: 758px; // match to PDF
 $manu_y: 261px; // match to PDF
+$feet_y: 353px; // to more or less touch the feet of the cartoon characters in header.png
 
 // animation variables
 
@@ -115,7 +116,7 @@ li {
       to {
         font-size: 0;
         opacity: 0;
-        top: -160px; // TBD
+        top: - $feet_y + $box_y; // looks weird, but that's because it's relative to #requirements position after its transformation into grass ;)
         left: $x;
       }
     }
@@ -130,13 +131,13 @@ $profileHeight: 204px;
 
 $jobHeight: 150px;
 #job {
-  top: $defaultMargin + $profileHeight + $defaultMargin;
+  top: $defaultMargin + $profileHeight + $defaultMargin; // relative to #requirements
   -webkit-animation-name: moveToBox2;
 }
 @include moveToBoxAnimation("moveToBox2", $box2_x);
 
 #application {
-  top: $defaultMargin + $profileHeight + $defaultMargin + $jobHeight + $defaultMargin;
+  top: $defaultMargin + $profileHeight + $defaultMargin + $jobHeight + $defaultMargin; // relative to #requirements
   -webkit-animation-name: moveToBox3;
 }
 @include moveToBoxAnimation("moveToBox3", $box3_x);
@@ -151,7 +152,7 @@ $jobHeight: 150px;
     background: green;
     height: 100px; // arbitrary
     width: 2500px; // arbitrary
-    top: 353px; // to more or less touch the feet of the cartoon characters in header.png
+    top: $feet_y;
   }
 }
 
@@ -246,7 +247,7 @@ to { background-position: -500px; }
       }
       // jump
       82% {
-        top: $box_y + $boxSize + 2 * $boxBorderSize + 3px; // there are 3px of white on top of Manu's head in manu.png (TODO: remove?)
+        top: $box_y + $boxSize + 2 * $boxBorderSize - 4px; // there are 4px of white on top of Manu's head in manu.png (TODO: remove?)
         left: $end_x;
       }
       to {
@@ -273,8 +274,6 @@ $afterThirdRun_x: afterRun_x($box3_x);
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + $animDurationToRunAndJump;
   -webkit-animation-name: expand1;
 }
-
-// TODO: refactor
 
 @mixin boxResizeAnimation($iteration, $box_x) {
   $expandedWidth: 500px;
