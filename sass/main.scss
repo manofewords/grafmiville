@@ -247,7 +247,7 @@ $jobHeight: 150px;
 .box {
   border: $boxBorderSize solid black;
   border-radius: 5px;
-  background: #ffc70c;
+  background: #FAE499;
   color: black;
   width: $boxSize;
   line-height: $boxSize;
@@ -353,7 +353,7 @@ $afterThirdRun_x: afterRun_x($box3_x);
 @include runAndJumpAnimation("jumpnrun3", $afterSecondRun_x, $afterThirdRun_x); // triggered via JavaScript when button is clicked
 
 #box1 {
-  -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + $animDurationToRunAndJump;
+  -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear + 0.9 * $animDurationToRunAndJump;
   -webkit-animation-name: expand1;
 }
 

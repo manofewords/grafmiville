@@ -312,7 +312,7 @@ button:after {
 .box {
   border: 2px solid black;
   border-radius: 5px;
-  background: #ffc70c;
+  background: #FAE499;
   color: black;
   width: 30px;
   line-height: 30px;
@@ -445,7 +445,7 @@ to { background-position: -500px; }
 }
 
 #box1 {
-  -webkit-animation-delay: 12s;
+  -webkit-animation-delay: 11.7s;
   -webkit-animation-name: expand1;
 }
 
