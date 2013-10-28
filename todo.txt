@@ -1,0 +1,9 @@
+TODO
+
+- sprite (2h)
+- grass textures (0.5h)
+- texts (1h)
+- auto-scroll (0.5h)
+- bonus: parallax scrolling with clouds (2h)
+
+time spent so far: 16h
