@@ -84,6 +84,20 @@ li {
   }
 }
 
+button {
+  border: 0;
+  color: white;
+  background: $darkRed;
+  font-family: "Solex";
+  font-size: 1.5em;
+  @include border-radius(3px);
+  float: right;
+
+  &:after {
+    content: " ►";
+  }
+}
+
 #hello {
   $width: 250px;
 

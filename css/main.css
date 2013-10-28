@@ -126,6 +126,23 @@ li:before {
   color: #ce0c17;
 }
 
+button {
+  border: 0;
+  color: white;
+  background: #ce0c17;
+  font-family: "Solex";
+  font-size: 1.5em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  float: right;
+}
+button:after {
+  content: " ►";
+}
+
 #hello {
   position: absolute;
   top: 20px;
