@@ -6,6 +6,8 @@
 @import "compass/reset";
 @import "compass/typography/links/link-colors";
 @import "compass/css3/font-face";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
 
 // style variables
 
@@ -28,8 +30,8 @@ $feet_y: 353px; // to more or less touch the feet of the cartoon characters in h
 
 // animation variables
 
-$animStart: 2s; // first animation starts after $animStart seconds
-$animDurationToMoveOriginalTextToBoxes: 2s;
+$animStart: 4s; // first animation starts after $animStart seconds
+$animDurationToMoveOriginalTextToBoxes: 4s;
 $animDurationToMakeArrowsDisappear: 1s;
 $animDurationToRunAndJump: 3s; // 2s run, 1s jump
 $animDurationToExpandBox: 2s;
@@ -37,9 +39,8 @@ $animDurationToExpandBox: 2s;
 // special fonts
 
 @include font-face("Solex", font-files("solexreg-webfont.woff")); // yup, I haven't paid for it, but it's only used for this job application (so it's life expectancy is about 10min)
-$font-family: "Solex";
 @include font-face("JandA", font-files("jandasafeandsoundsolid-webfont.woff")); // same here
-$font-family: "JandA";
+@include font-face("ComingSoon", font-files("comingsoon-webfont.woff")); // same here
 
 body {
   font-family: "Solex";
@@ -80,6 +81,79 @@ li {
     content: "•";
     padding-right: 5px;
     color: $darkRed;
+  }
+}
+
+#hello {
+  $width: 250px;
+
+  position: absolute;
+  top: 20px; // arbitrary
+  left: ($manu_x + image-width("manu.png") / 2) - ($width / 2);
+
+  width: $width;
+  background: $darkRed;
+  @include border-radius(10px);
+  @include single-box-shadow(#808080);
+  text-align: center;
+  
+  div:first-child {
+    h1, p {
+      padding: 5px;
+      color: #fff;
+      font-family: Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+  }
+  .name {
+    background: #fff;    
+    line-height: 2em;
+    font-family: "ComingSoon";
+    font-size: 3em;
+    @include border-radius(0 0 10px 10px);
+  }
+
+  opacity: 0;
+  -webkit-animation-delay: $animStart / 2; // must just be smaller than $animStart
+  -webkit-animation-duration: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear - 2s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: showAndHide;
+}
+
+@-webkit-keyframes showAndHide {
+  // show, stay visible for a while, hide
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// as soon as the name tag is shown, Manu is not anonymous anymore => hide the "?"
+#unknown {
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  margin-top: 15px; // match PDF file
+
+  -webkit-animation-delay: $animStart; // see #hello
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: disappear;
+}
+
+@-webkit-keyframes disappear {
+  to {
+    opacity: 0;
   }
 }
 
@@ -199,13 +273,7 @@ $jobHeight: 150px;
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes;
   -webkit-animation-duration: $animDurationToMakeArrowsDisappear;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: disappear;
-}
-
-@-webkit-keyframes disappear {
-  to {
-    opacity: 0;
-  }
+  -webkit-animation-name: disappear; // re-use an existing animation
 }
 
 /*

@@ -68,6 +68,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   src: url('../fonts/jandasafeandsoundsolid-webfont.woff') format('woff');
 }
 
+@font-face {
+  font-family: "ComingSoon";
+  src: url('../fonts/comingsoon-webfont.woff') format('woff');
+}
+
 body {
   font-family: "Solex";
   color: #777472;
@@ -121,12 +126,87 @@ li:before {
   color: #ce0c17;
 }
 
+#hello {
+  position: absolute;
+  top: 20px;
+  left: 668px;
+  width: 250px;
+  background: #ce0c17;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px gray;
+  -moz-box-shadow: 0px 0px 5px gray;
+  box-shadow: 0px 0px 5px gray;
+  text-align: center;
+  opacity: 0;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: showAndHide;
+}
+#hello div:first-child h1, #hello div:first-child p {
+  padding: 5px;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+#hello div:first-child h1 {
+  margin: 0;
+  font-size: 2em;
+}
+#hello .name {
+  background: #fff;
+  line-height: 2em;
+  font-family: "ComingSoon";
+  font-size: 3em;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+@-webkit-keyframes showAndHide {
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#unknown {
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  margin-top: 15px;
+  -webkit-animation-delay: 4s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: disappear;
+}
+
+@-webkit-keyframes disappear {
+  to {
+    opacity: 0;
+  }
+}
+
 #requirements,
 #profile,
 #job,
 #application {
-  -webkit-animation-delay: 2s;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 4s;
+  -webkit-animation-duration: 4s;
   -webkit-animation-fill-mode: both;
   /* this sucks, but it seems impossible to animate anything else than absolutely positionned elements */
   position: absolute;
@@ -250,16 +330,10 @@ li:before {
   position: absolute;
   top: 208px;
   left: 756px;
-  -webkit-animation-delay: 4s;
+  -webkit-animation-delay: 8s;
   -webkit-animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: disappear;
-}
-
-@-webkit-keyframes disappear {
-  to {
-    opacity: 0;
-  }
 }
 
 /*
@@ -281,7 +355,7 @@ to { background-position: -500px; }
   height: 100px;
   background-image: url("../images/manu.png");
   position: absolute;
-  -webkit-animation-delay: 5s;
+  -webkit-animation-delay: 9s;
   -webkit-animation-duration: 3s;
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: jumpnrun1;
@@ -354,7 +428,7 @@ to { background-position: -500px; }
 }
 
 #box1 {
-  -webkit-animation-delay: 8s;
+  -webkit-animation-delay: 12s;
   -webkit-animation-name: expand1;
 }
 
