@@ -230,7 +230,6 @@ button:after {
 }
 
 #requirements {
-  background: #f2f1ec;
   width: 894px;
   height: 600px;
   top: 475px;
@@ -255,7 +254,7 @@ button:after {
   to {
     font-size: 0;
     opacity: 0;
-    top: -163px;
+    top: -150px;
     left: 1000px;
   }
 }
@@ -273,7 +272,7 @@ button:after {
   to {
     font-size: 0;
     opacity: 0;
-    top: -163px;
+    top: -150px;
     left: 1500px;
   }
 }
@@ -291,7 +290,7 @@ button:after {
   to {
     font-size: 0;
     opacity: 0;
-    top: -163px;
+    top: -150px;
     left: 2000px;
   }
 }
@@ -301,11 +300,19 @@ button:after {
 }
 
 @-webkit-keyframes grass {
+  80% {
+    background: url("../images/greyTile.png");
+  }
+
+  81% {
+    background: #407700;
+  }
+
   to {
-    background: green;
-    height: 100px;
+    background: url("../images/grass.png");
+    height: 200px;
     width: 2500px;
-    top: 353px;
+    top: 340px;
   }
 }
 

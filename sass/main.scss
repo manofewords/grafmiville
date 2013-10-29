@@ -26,7 +26,7 @@ $box3_x: 2000px;
 $box_y: 190px;
 $manu_x: 758px; // match to PDF
 $manu_y: 261px; // match to PDF
-$feet_y: 353px; // to more or less touch the feet of the cartoon characters in header.png
+$feet_y: 340px; // to more or less touch the feet of the cartoon characters in header.png
 
 // animation variables
 
@@ -47,6 +47,7 @@ body {
   color: #777472;
   font-size: $fontSize;
   position: relative;
+  //background: #407700 url("../images/sky.png") repeat-x top;
 }
 
 a {
@@ -184,7 +185,6 @@ button {
 }
 
 #requirements {
-  background: #f2f1ec; // match PDF file
   width: image-width("header.png");
   height: 600px; // arbitrary
   top: image-height("header.png");
@@ -235,10 +235,15 @@ $jobHeight: 150px;
 }
 
 @-webkit-keyframes grass {
+  80% {
+    background: url("../images/greyTile.png"); // must use a background image instead of a color for the transition to work...
+  }
+  81% {
+    background: #407700;
+  }
   to {
-    // TODO: add texture
-    background: green;
-    height: 100px; // arbitrary
+    background: url("../images/grass.png");
+    height: 200px; // arbitrary
     width: 2500px; // arbitrary
     top: $feet_y;
   }
