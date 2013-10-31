@@ -65,7 +65,7 @@
       box2Html = '<h1>Adéquation avec le job proposé</h1><p></p><button onclick="getButtonHandler(2)()">Suivant</button>',
       box3Html = '<h1>Portfolio et CV</h1><p></p>';
 
-      window.onload = function() {
+      window.onload = function() {        
         // idiots! The events should be called "animationstart"
         document.getElementById("box1").addEventListener("webkitAnimationStart", getBoxHandler(1, box1Html), false);
         document.getElementById("box2").addEventListener("webkitAnimationStart", getBoxHandler(2, box2Html), false);

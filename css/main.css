@@ -1,7 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -360,24 +356,11 @@ button:after {
   -webkit-animation-name: disappear;
 }
 
-/*
-#manu {
-width: 50px;
-height: 72px;
-background-image: url("../images/sprite.png");
-
--webkit-animation: play .8s steps(10) infinite;
-}
-
-@-webkit-keyframes play {
-from { background-position:    0px; }
-to { background-position: -500px; }
-}
-*/
 #manu {
   width: 70px;
   height: 100px;
-  background-image: url("../images/manu.png");
+  background-image: url("../images/sprite.png");
+  background-position: 0 0;
   position: absolute;
   -webkit-animation-delay: 9s;
   -webkit-animation-duration: 3s;
@@ -391,7 +374,88 @@ to { background-position: -500px; }
     left: 758px;
   }
 
+  4% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  8% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  12% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  16% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  20% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  24% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  28% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  32% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  36% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  40% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  44% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  48% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  52% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  56% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  60% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  64% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
   66% {
+    background-position: 0;
     top: 261px;
     left: 982px;
   }
@@ -402,6 +466,7 @@ to { background-position: -500px; }
   }
 
   to {
+    background-position: 0;
     top: 261px;
     left: 982px;
   }
@@ -413,7 +478,88 @@ to { background-position: -500px; }
     left: 982px;
   }
 
+  4% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  8% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  12% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  16% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  20% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  24% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  28% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  32% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  36% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  40% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  44% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  48% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  52% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  56% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  60% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  64% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
   66% {
+    background-position: 0;
     top: 261px;
     left: 1482px;
   }
@@ -424,6 +570,7 @@ to { background-position: -500px; }
   }
 
   to {
+    background-position: 0;
     top: 261px;
     left: 1482px;
   }
@@ -435,7 +582,88 @@ to { background-position: -500px; }
     left: 1482px;
   }
 
+  4% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  8% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  12% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  16% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  20% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  24% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  28% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  32% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  36% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  40% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  44% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  48% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  52% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  56% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  60% {
+    background-position: 0px;
+    -webkit-animation-timing-function: step-start;
+  }
+
+  64% {
+    background-position: -70px;
+    -webkit-animation-timing-function: step-start;
+  }
+
   66% {
+    background-position: 0;
     top: 261px;
     left: 1982px;
   }
@@ -446,6 +674,7 @@ to { background-position: -500px; }
   }
 
   to {
+    background-position: 0;
     top: 261px;
     left: 1982px;
   }

@@ -1,8 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
 @import "compass/reset";
 @import "compass/typography/links/link-colors";
 @import "compass/css3/font-face";
@@ -35,6 +30,9 @@ $animDurationToMoveOriginalTextToBoxes: 4s;
 $animDurationToMakeArrowsDisappear: 1s;
 $animDurationToRunAndJump: 3s; // 2s run, 1s jump
 $animDurationToExpandBox: 2s;
+
+$numberOfSprites: 2;
+$spriteWidth: image-width("sprite.png") / $numberOfSprites;
 
 // special fonts
 
@@ -104,7 +102,7 @@ button {
 
   position: absolute;
   top: 20px; // arbitrary
-  left: ($manu_x + image-width("manu.png") / 2) - ($width / 2);
+  left: ($manu_x + $spriteWidth / 2) - ($width / 2);
 
   width: $width;
   background: $darkRed;
@@ -295,24 +293,11 @@ $jobHeight: 150px;
   -webkit-animation-name: disappear; // re-use an existing animation
 }
 
-/*
 #manu {
-width: 50px;
-height: 72px;
-background-image: url("../images/sprite.png");
-
--webkit-animation: play .8s steps(10) infinite;
-}
-
-@-webkit-keyframes play {
-from { background-position:    0px; }
-to { background-position: -500px; }
-}
-*/
-#manu {
-  width: image-width("manu.png");
-  height: image-height("manu.png");
-  background-image: url("../images/manu.png");
+  width: $spriteWidth;
+  height: image-height("sprite.png");
+  background-image: url("../images/sprite.png");
+  background-position: 0 0;
   position: absolute;
 
   -webkit-animation-delay: $animStart + $animDurationToMoveOriginalTextToBoxes + $animDurationToMakeArrowsDisappear;
@@ -327,17 +312,27 @@ to { background-position: -500px; }
         top: $manu_y;
         left: $start_x;
       }
-      // run for 2/3 of the time
-      66% {
+
+      // sprite run animation till 66%
+      @for $i from 1 through 16 {
+        #{$i * 4%} {
+          background-position: -(($i - 1) % $numberOfSprites) * $spriteWidth;
+          -webkit-animation-timing-function: step-start;
+        }
+      }
+
+      66% { // run for 2/3 of the time
+        background-position: 0;
         top: $manu_y;
         left: $end_x;
       }
       // jump
       82% {
-        top: $box_y + $boxSize + 2 * $boxBorderSize - 4px; // there are 4px of white on top of Manu's head in manu.png (TODO: remove?)
+        top: $box_y + $boxSize + 2 * $boxBorderSize - 4px; // there are 4px of white on top of Manu's head in sprite.png (TODO: remove?)
         left: $end_x;
       }
       to {
+        background-position: 0;
         top: $manu_y;
         left: $end_x;
       }
@@ -345,7 +340,7 @@ to { background-position: -500px; }
 }
 
 @function afterRun_x($targetBox_x) {
-    @return ($targetBox_x + $boxSize / 2 + $boxBorderSize) - (image-width("manu.png") / 2);
+    @return ($targetBox_x + $boxSize / 2 + $boxBorderSize) - ($spriteWidth / 2);
 }
 
 $afterFirstRun_x: afterRun_x($box1_x);
