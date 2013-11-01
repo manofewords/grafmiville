@@ -16,8 +16,8 @@ $expandedBoxPadding: 20px;
 // positioning variables
 
 $box1_x: 1000px;
-$box2_x: 1500px;
-$box3_x: 2000px;
+$box2_x: $box1_x + 500px;
+$box3_x: $box2_x + 500px;
 $box_y: 190px;
 $manu_x: 758px; // match to PDF
 $manu_y: 261px; // match to PDF
@@ -249,7 +249,7 @@ $jobHeight: 150px;
   }
   to {
     background: url("../images/grass.png");
-    width: 2500px; // arbitrary, but bigger than $box3_x
+    width: $box3_x + 500px; // arbitrary, but bigger than $box3_x
     top: $feet_y;
   }
 }
