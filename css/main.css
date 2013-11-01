@@ -98,6 +98,14 @@ header {
   height: 475px;
 }
 
+footer {
+  background: blue url("../images/footer.png");
+  width: 900px;
+  height: 226px;
+  position: absolute;
+  top: 1075px;
+}
+
 h1 {
   font-family: "JandA";
   color: #ce0c17;
@@ -226,8 +234,8 @@ button:after {
 }
 
 #requirements {
-  width: 894px;
-  height: 600px;
+  width: 900px;
+  height: 735px;
   top: 475px;
 }
 
@@ -306,7 +314,6 @@ button:after {
 
   to {
     background: url("../images/grass.png");
-    height: 200px;
     width: 2500px;
     top: 340px;
   }

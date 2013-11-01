@@ -58,6 +58,14 @@ header {
   height: image-height("header.png");
 }
 
+footer {
+  background: blue url("../images/footer.png");
+  width: image-width("footer.png");
+  height: image-height("footer.png");
+  position: absolute;
+  top: image-height("grass.png") + $feet_y;
+}
+
 h1 {
   font-family: "JandA";
   color: $darkRed;
@@ -183,8 +191,8 @@ button {
 }
 
 #requirements {
-  width: image-width("header.png");
-  height: 600px; // arbitrary
+  width: image-width("footer.png");
+  height: image-height("grass.png");
   top: image-height("header.png");
 }
 
@@ -241,8 +249,7 @@ $jobHeight: 150px;
   }
   to {
     background: url("../images/grass.png");
-    height: 200px; // arbitrary
-    width: 2500px; // arbitrary
+    width: 2500px; // arbitrary, but bigger than $box3_x
     top: $feet_y;
   }
 }
