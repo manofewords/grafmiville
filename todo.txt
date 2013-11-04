@@ -1,6 +1,6 @@
 TODO
 
-- texts (1h)
 - bonus: parallax scrolling with clouds (2h)
+- bonus: sounds (?h)
 
-time spent so far: 20h
+time spent so far: 22h

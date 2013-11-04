@@ -25,7 +25,7 @@ $feet_y: 340px; // to more or less touch the feet of the cartoon characters in h
 
 // animation variables
 
-$animStart: 4s; // first animation starts after $animStart seconds
+$animStart: 5s; // first animation starts after $animStart seconds
 $animDurationToMoveOriginalTextToBoxes: 4s;
 $animDurationToMakeArrowsDisappear: 1s;
 $animDurationToRunAndJump: 3s; // 2s run, 1s jump
@@ -39,6 +39,7 @@ $spriteWidth: image-width("sprite.png") / $numberOfSprites;
 @include font-face("Solex", font-files("solexreg-webfont.woff")); // yup, I haven't paid for it, but it's only used for this job application (so it's life expectancy is about 10min)
 @include font-face("JandA", font-files("jandasafeandsoundsolid-webfont.woff")); // same here
 @include font-face("ComingSoon", font-files("comingsoon-webfont.woff")); // same here
+@include font-face("zocial", font-files("zocial-regular-webfont.woff"));
 
 body {
   font-family: "Solex";
@@ -81,7 +82,7 @@ ul {
 
 li {
   padding-left: 1em;
-  text-indent: -1em;
+  text-indent: -0.6em;
   line-height: 1.5em;
 
   &:before {
@@ -99,6 +100,7 @@ button {
   font-size: 1.5em;
   @include border-radius(3px);
   float: right;
+  margin: 1em;
 
   &:after {
     content: " ►";
@@ -406,3 +408,39 @@ $afterThirdRun_x: afterRun_x($box3_x);
 @include boxResizeAnimation(1, $box1_x);
 @include boxResizeAnimation(2, $box2_x);
 @include boxResizeAnimation(3, $box3_x);
+
+// social links
+
+#social {
+  a {
+    border: 0;
+    text-decoration: none;
+  }
+
+  li {
+    display: inline;
+    font-size: 1.5em;
+    padding: 0;
+    padding-right: 1em;
+    text-indent: 0;
+    line-height: 1.5em;
+
+    &:before {
+      content: "";
+      padding: 0;
+    }
+  }
+
+  .zocial-email:before{content:"]"}
+  .zocial-facebook:before{content:"f"}
+  .zocial-github:before{content:"g"}
+  .zocial-googleplus:before{content:"+"}
+  .zocial-instagram:before{content:"\00DC"}
+  .zocial-linkedin:before{content:"L"}
+  .zocial-pinboard:before{content:"n"}
+  .zocial-twitter:before{content:"T"}
+
+  [class*="zocial-"]:before {
+    font-family: 'zocial', sans-serif;
+  }
+}

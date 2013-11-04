@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <base target="_blank"/>
   </head>
   <body>
     <header>
@@ -45,7 +46,7 @@
       <div id="application">
         <h1>Candidature</h1>
         <p>Dossier complet incluant CV, lettre de motivation et portfolio à envoyer par email à <br/>
-        <a href="mailto:job@grafmiville.ch?subject=référence: 10/13 - développeur web">job@grafmiville.ch</a> / référence: 10/13 - développeur web</p>
+        <a href="mailto:job@grafmiville.ch?subject=10/13 - développeur web">job@grafmiville.ch</a> / référence: 10/13 - développeur web</p>
       </div>
     </section>
 
@@ -61,9 +62,41 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript">
       // keep the HTML in here ;)
-      var box1Html = '<h1>Mon profil</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac ultrices justo. Curabitur dui odio, aliquam sed hendrerit eu, scelerisque sed urna. Integer mollis libero nec arcu tempus, pulvinar hendrerit ligula sagittis. Morbi tincidunt posuere nibh nec elementum. Donec in nibh risus. Morbi magna quam, gravida imperdiet lacus non, placerat euismod ipsum. Nam eu metus elementum, molestie elit in, tristique diam. Integer faucibus, est aliquam ornare consectetur, risus velit blandit neque, sed vestibulum magna leo sit amet erat.</p><p>Nam vestibulum, elit sit amet auctor sagittis, dui massa tincidunt orci, nec consequat risus quam non dui. Proin ut mi aliquet velit eleifend cursus eget faucibus lorem. Maecenas fringilla metus quis quam ultrices imperdiet. Donec in mollis eros, eu venenatis dui. Nam non mauris elit. Cras sollicitudin urna sit amet ultrices rutrum. Quisque dignissim leo orci, ac pulvinar eros egestas quis. Aenean convallis, velit eget accumsan ornare, nulla leo semper eros, at vehicula purus risus semper odio. Praesent id magna non metus molestie porta. Suspendisse pellentesque aliquam metus, placerat vestibulum massa tincidunt et. Cras nec mattis massa. Ut eget augue eu metus interdum dapibus vitae feugiat lacus. Integer at odio nibh. Duis vel ullamcorper nisi. Ut mollis massa felis, sed laoreet ligula gravida eget. Duis feugiat felis sit amet risus dictum, sit amet condimentum velit mollis.</p><button onclick="getButtonHandler(1)()">Suivant</button>',
-      box2Html = '<h1>Adéquation avec le job proposé</h1><p></p><button onclick="getButtonHandler(2)()">Suivant</button>',
-      box3Html = '<h1>Portfolio et CV</h1><p></p>';
+      var box1Html, box2Html, box3Html;
+
+      box1Html = '<h1>Mon profil</h1>';
+      box1Html += '<ul>';
+      box1Html += '<li>90% de mon expérience professionnelle touche à PHP, JavaScript, HTML et CSS. Depuis 2008, essentiellement JavaScript.</li>';
+      box1Html += '<li>Je n\'ai malheureusement aucune connaissances de Drupal. Par contre, j\'ai déjà utilisé Cont\'n\'Shop (un CMS propriétaire développé par <a href="http://www.elca.ch">ELCA</a>, mon ancien employeur), Mambo et WordPress (pour autant que WP puisse être considéré comme un CMS).</li>';
+      box1Html += '<li>Je me suis déjà servi de jQuery, mais pas Smarty. Les frameworks récents avec lesquels j\'ai le plus d\'expérience sont <a href="http://www.sencha.com/products/extjs/">ExtJS</a> et <a href="http://www.sencha.com/products/touch/">Sencha Touch</a>.</li>';
+      box1Html += '<li>Je n\'ai quasiment fait que du développement front-end. Il est difficile de ne pas faire du MVC à partir du moment où un minimum de structure est requis.</li>';
+      box1Html += '<li>J\'ai des connaissances très minimales des outils graphiques Adobe Photoshop. Je suis cependant très ouvert à apprendre. Dans le cadre de mon travail, je n\'ai jamais eu l\'occasion de me servir de ces outils. Sur mon ordinateur personnel, j\'ai installé <a href="http://www.pixelmator.com/">Pixelmator</a>, que je considère être aussi complet (pour mon niveau), probablement mieux codé, et disponible pour une fraction du prix.</li>';
+      box1Html += '<li>J\'estime être rigoureux, méthodique et précis, curieux, passionné par les nouvelles technologies. J\'ajouterais que j\'apprends en général assez vite.</li>';
+      box1Html += '</ul>';
+      box1Html += '<button onclick="getButtonHandler(1)()">Suivant</button>';
+
+      box2Html = '<h1>Adéquation avec le job proposé</h1>';
+      box2Html += '<ul>';
+      box2Html += '<li>Pendant mes 8 ans chez <a href="http://www.elca.ch">ELCA</a>, j\'ai fait du support pour des sites et intranets existants, développé de nouveaux sites (Paléo 2005, le site du GHI en 2006), des applications web desktop (guichet de vente de l\'Opéra de Paris), des applications web pour mobile, des sites web "responsive", etc.</li>';
+      box2Html += '<li>Comme évoqué précédemment, je n\'ai aucune expérience avec Drupal. J\'ai par contre déjà écrit des thèmes WordPress, et je me suis fait la main avec d\'autres CMS. Je connais donc les principes généraux, mais pas les particularités de Drupal.</li>';
+      box2Html += '<li>Le front-end HTML/CSS est mon domaine de prédilection.</li>';
+      box2Html += '<li>J\'adore essayer de nouvelles techniques et technologies.</li>';
+      box2Html += '</ul>';
+      box2Html += '<button onclick="getButtonHandler(2)()">Suivant</button>';
+
+      box3Html = '<h1>Portfolio et CV</h1>';
+      box3Html += '<p>Comme évoqué dans mon e-mail, je n\'ai pas de quoi vous présenter de portfolio. Mon CV peut être consulté <a href="http://plothole.net/resume/">en ligne</a>. Au lieu de l\'être dans une lettre, ma motivation est exprimée par la vingtaine d\'heures passées à créer cette page et à apprendre les animations CSS.</p>';
+      box3Html += '<p>Je vous remercie pour votre attention. Voici quelques liens si vous souhaitez en savoir plus sur moi:</p>';
+      box3Html += '<ul id="social">';
+      box3Html += '<li><a href="mailto:manuel.hitz@gmail.com?subject=Candidature Graf Miville" class="zocial-email"></a></li>';
+      box3Html += '<li><a href="https://pinboard.in/u:manofewords/" class="zocial-pinboard"></a></li>';
+      box3Html += '<li><a href="https://www.facebook.com/manuel.hitz" class="zocial-facebook"></a></li>';
+      box3Html += '<li><a href="https://twitter.com/manofewords" class="zocial-twitter"></a></li>';
+      box3Html += '<li><a href="https://plus.google.com/102965473607923750663/about" class="zocial-googleplus"></a></li>';
+      box3Html += '<li><a href="https://github.com/manofewords" class="zocial-github"></a></li>';
+      box3Html += '<li><a href="http://ch.linkedin.com/in/manuelhitz" class="zocial-linkedin"></a></li>';
+      box3Html += '<li><a href="http://instagram.com/manofewords" class="zocial-instagram"></a></li>';
+      box3Html += '</ul>';
 
       window.onload = function() {        
         // idiots! The events should be called "animationstart"
